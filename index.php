@@ -8,8 +8,8 @@ $properties = $objConnection->consult("SELECT * FROM `properties`");
 ?>
     <div class="p-5 bg-light">
         <div class="container">
-            <h1 class="display-3">Welcome!</h1>
-            <p class="lead">This is my Portfolio.</p>
+            <h1 class="display-3">Dreamers Real Estate!</h1>
+            <p class="lead">Our properties waiting for you!</p>
             <hr class="my-2">
             <p>More info</p>    
         </div>
@@ -25,10 +25,15 @@ $properties = $objConnection->consult("SELECT * FROM `properties`");
 
     <div class="col">
         <div class="card">
-        <img src="Images/<?php echo $property['image']; ?>" class="card-img-top" alt="...">
+        <img style="widht: 250px; height:300px;"  src="Images/<?php echo $property['image']; ?>" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title"><?php echo $property['name']; ?></h5>
             <p class="card-text"><?php echo $property['description']; ?></p>
+            <p class="card-text">Address: <?php echo $property['address']; ?></p>
+            <p class="card-text">City: <?php echo $property['city']; ?></p>
+            <p class="card-text">Status: <?php echo $property['status']; ?></p>
+            <p class="card-text">Price: <?php echo $property['price']; ?></p>
+
         </div>
         </div>
     </div>   

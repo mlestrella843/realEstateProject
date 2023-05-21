@@ -39,6 +39,7 @@ if($_POST){
 
 }
 
+//for delete a property
 if($_GET){
     //instanciamos una conexion.
     $id=$_GET['delete'];
@@ -58,7 +59,7 @@ if($_GET){
 <br/>
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
         <!----------->                      
           <div class="card">
                 <div class="card-header">
@@ -90,7 +91,7 @@ if($_GET){
         <!-------->
         </div>
       
-        <div class="col-md-6">
+        <div class="col-md-8">
      <!----------->                        
             <div class="table-responsive">
                 <table class="table">
@@ -127,6 +128,8 @@ if($_GET){
                             <td><?php echo $property['price']; ?></td>
 
                             <td> <a class="btn btn-danger" href="?delete=<?php echo $property['id']; ?>">Delete</a></td>
+                            <td> <a class="btn btn-primary" href="?edit=<?php echo $property['id']; ?>">Edit</a></td>
+                            
 
 
                         </tr>
