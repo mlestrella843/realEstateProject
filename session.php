@@ -9,37 +9,35 @@ if($_POST){
 
     $objConnection=new connection();
     $sql="SELECT * FROM `users`;";
-    $arrayUsers[] = $objConnection->consult($sql);
+    $arrayUsers = $objConnection->consult($sql);
 
     print_r($arrayUsers);
 
-}
-    /*
     foreach($arrayUsers as $oneUser){
 
-      echo "entro al array Users";
+      print_r($oneUser); 
 
-      if($role=='user'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) && ($oneUser['role']==$role) )
+
+      echo "ROLE en OSEUSER".$oneUser['username']."<br/>";
+
+      if($role==='user'){  
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) )
                 echo ("darle solo acceso a pagina portfolio");
               }
-               else{
-                echo ("El usuario no existe");
-              }
-      if($role=='admin'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) && ($oneUser['role']==$role) )
+              
+      if($role==='admin'){  
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) )
                  echo ("darle acceso a todo");
               }
                else{
-                echo ("El usuario no existe");
-              }
-     
-          }      
+                echo ("El usuario no existe en if admin");
+              }  
+    }      
   
    // header("location:portfolio.php");
 
-} */
 
+}
 /*
  session_start();
     if($_POST){ 
