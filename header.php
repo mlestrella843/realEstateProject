@@ -6,8 +6,6 @@
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +19,7 @@
 </head>
 <body>
 
-
+<div class="container">
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -37,6 +35,7 @@
         <li class="nav-item">
           <a class="nav-link" href="portfolio.php">Projects</a>
         </li>
+        <!--
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
@@ -48,6 +47,8 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+  -->
+
         <li class="nav-item">
           <a class="nav-link" href="closeSession.php">Sign Out</a>
         </li>
@@ -64,7 +65,7 @@
 
 
 
-   <div class="container">
+ 
 <!--
     <a href="index.php">Home</a> |
     <a href="portfolio.php">Portfolio</a> |

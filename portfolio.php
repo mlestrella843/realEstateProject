@@ -26,8 +26,6 @@ if($_POST){
     //price
     $price = $_POST['price'];
 
-
-
     $objConnection=new connection();
     $sql="INSERT INTO `properties` (`id`, `name`, `image`, `description`, `address`, `city`, `status`, `price`) VALUES (NULL, '$nameProject', '$image', '$description', '$address', '$city', '$status', '$price');";
 
@@ -120,7 +118,6 @@ if($_GET){
 
                             <td><?php echo $property['description']; ?></td>
                            
-
                             <td><?php echo $property['address']; ?></td>
                             <td><?php echo $property['city']; ?></td>
 
@@ -130,8 +127,6 @@ if($_GET){
                             <td> <a class="btn btn-danger" href="?delete=<?php echo $property['id']; ?>">Delete</a></td>
                             <td> <a class="btn btn-primary" href="?edit=<?php echo $property['id']; ?>">Edit</a></td>
                             
-
-
                         </tr>
                        <?php } ?>
                     </tbody>
