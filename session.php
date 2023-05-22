@@ -1,4 +1,46 @@
-<?php 
+<?php include('connection.php');?>
+
+<?php
+if($_POST){    
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['roleName'];
+
+    $objConnection=new connection();
+    $sql="SELECT * FROM `users`;";
+    $arrayUsers[] = $objConnection->consult($sql);
+
+    print_r($arrayUsers);
+
+}
+    /*
+    foreach($arrayUsers as $oneUser){
+
+      echo "entro al array Users";
+
+      if($role=='user'){  
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) && ($oneUser['role']==$role) )
+                echo ("darle solo acceso a pagina portfolio");
+              }
+               else{
+                echo ("El usuario no existe");
+              }
+      if($role=='admin'){  
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) && ($oneUser['role']==$role) )
+                 echo ("darle acceso a todo");
+              }
+               else{
+                echo ("El usuario no existe");
+              }
+     
+          }      
+  
+   // header("location:portfolio.php");
+
+} */
+
+/*
  session_start();
     if($_POST){ 
 
@@ -11,7 +53,7 @@
         else{
             echo "<script> alert('User or password incorrect'); </script>";
         }
-}
+} */
 
 ?>
 
@@ -45,28 +87,38 @@
   
 <div class="container"> <!-- esta es la clase bs-5 grid container -->
     <div class="row justify-content-center align-items-center g-2"> <!-- clase bs-5 grid row-->  
-                <!-- Aqui dividmos la pantalla de 12 en 3 divis, y llenamos con el segundo para centrar el formulario-->
-                    <div class="col-md-4">
+        <!-- Aqui dividmos la pantalla de 12 en 3 divis, y llenamos con el segundo para centrar el formulario-->
+            <div class="col-md-4">
 
-                    </div>
-                    <!--Segundo divi con forumlario dentro-->
-                    <div class="col-md-4">
-                        <div class="card">
-                                    <div class="card-header">
-                                        Login Page
-                                    </div>          
-                        
-                                    <div class="card-body">
-                                        <form action="session.php" method="post">
-                                                User: <input class="form-control" type="text" name="user" id="">
-                                                <br/>
-                                                Password: <input class="form-control" type="text" name="password" id="">
-                                                <br/>
-                                                <button class="btn btn-success" type="submit">See Portfolio</button>            
-                                        </form>
+            </div>
+            <!--Segundo divi con forumlario dentro-->
+        <div class="col-md-4">
+            <div class="card">
+                        <div class="card-header">
+                            Login Page
+                        </div>          
+            
+                        <div class="card-body">
+                            <form action="session.php" method="post">
+                                    Username: <input class="form-control" type="text" name="username" id="">
+                                    <br/>
+                                    Password: <input class="form-control" type="text" name="password" id="">
+                                    <br/>
+                                    <p>
+                                    Role:
+                                    <div class="input-group mb-3">
+                                      <select class="form-select" name="roleName">
+                                        <option selected>Choose Admin or User...</option>
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                      </select>
                                     </div>
-                        <div class="card-footer text-muted">
-                    </div>
+                                    <br/>
+                                <button style="width:30%" class="btn btn-success" type="submit">Submit</button>            
+                            </form>
+                        </div>
+            <div class="card-footer text-muted">
+        </div>
     </div>  
 </div>
         <!-- tercer divi columna 3-->
