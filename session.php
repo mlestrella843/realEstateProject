@@ -1,7 +1,9 @@
 <?php include('connection.php');?>
 
 <?php
-if($_POST){    
+if($_POST){   
+  
+    session_start();
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -11,47 +13,28 @@ if($_POST){
     $sql="SELECT * FROM `users`;";
     $arrayUsers = $objConnection->consult($sql);
 
-    print_r($arrayUsers);
+   // print_r($arrayUsers);
 
     foreach($arrayUsers as $oneUser){
 
-      print_r($oneUser); 
-
-
-      echo "ROLE en OSEUSER".$oneUser['username']."<br/>";
-
       if($role==='user'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) )
-                echo ("darle solo acceso a pagina portfolio");
-              }
-              
-      if($role==='admin'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) )
-                 echo ("darle acceso a todo");
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
+                 header("location:index.php");
               }
                else{
-                echo ("El usuario no existe en if admin");
+                header("location:session.php");
+              }
+            }
+      if($role==='admin'){  
+              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
+                 header("location:portfolio.php");
+              }
+               else{
+                header("location:session.php");
               }  
-    }      
-  
-   // header("location:portfolio.php");
-
-
+          }      
+  }
 }
-/*
- session_start();
-    if($_POST){ 
-
-        if( ( $_POST['user']=="Mestrella" ) && ( $_POST['password']=="123456" ) ) {
-
-            $_SESSION['user']="Mestrella";
-
-           header("location:index.php");
-        }
-        else{
-            echo "<script> alert('User or password incorrect'); </script>";
-        }
-} */
 
 ?>
 

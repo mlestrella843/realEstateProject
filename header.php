@@ -1,8 +1,16 @@
 <?php 
+
+    if($_POST){   
+  
     session_start();
-    if( isset($_SESSION['user']) != "Mestrella" ){
-        header("location:session.php");
+    $username = $_POST['username'];
+     if( $username !="Mrestrella"){
+         header("location:session.php");
+     }
+
     }
+
+
 ?>
 
 <!DOCTYPE html>

@@ -4,19 +4,15 @@
 // Aqui se reciben los datos del formulario
 //Ademas de instancia una conexion, se crea una instruccion sql tipo INSERT y se ejecuta.
 if($_POST){    
-   // print_r($_POST);
-   //name
+   
     $nameProject = $_POST['nameProject'];
-    //description
-
+    //image
     $date = new DateTime();
     $image= $date->getTimeStamp()."_".$_FILES['file']['name'];
     $image_temp=$_FILES['file']['tmp_name'];
     move_uploaded_file($image_temp,"Images/".$image);
-
+    //description
     $description = $_POST['description'];
-    //image
-   
     //Address
     $address = $_POST['address'];
     //city
