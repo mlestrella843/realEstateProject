@@ -52,6 +52,18 @@ if($_POST){
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+   <link rel="stylesheet" href="styles.css">
+
+
+ <!-- Agregue font Awesome de bootsrap-->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+
+<!-- Fonts de google fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -89,14 +101,18 @@ if($_POST){
                                     Role:
                                     <div class="input-group mb-3">
                                       <select class="form-select" name="roleName">
-                                        <option selected>Choose Admin or User...</option>
-                                        <option value="user">User</option>
-                                        <option value="admin">Admin</option>
+                                        <option selected class="fonts">Choose Admin or User...</option>
+                                        <option value="user" class="fonts">User</option>
+                                        <option value="admin" class="fonts">Admin</option>
                                       </select>
                                     </div>
                                     <br/>
                                 <button style="width:30%" class="btn btn-success" type="submit">Submit</button>            
                             </form>
+                            <br/>
+                             <p><a class="link-opacity-100" href="register.php">Sign Up / Register</a></p>
+                            <br/>
+
                         </div>
             <div class="card-footer text-muted">
         </div>

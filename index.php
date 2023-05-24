@@ -25,12 +25,12 @@ $properties = $objConnection->consult("SELECT * FROM `properties`");
         <div class="card">
         <img style="widht: 250px; height:300px;"  src="Images/<?php echo $property['image']; ?>" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title"><?php echo $property['name']; ?></h5>
-            <p class="card-text"><?php echo $property['description']; ?></p>
-            <p class="card-text">Address: <?php echo $property['address']; ?></p>
-            <p class="card-text">City: <?php echo $property['city']; ?></p>
-            <p class="card-text">Status: <?php echo $property['status']; ?></p>
-            <p class="card-text">Price: <?php echo $property['price']; ?></p>
+            <h5 class="fonts" class="card-title"><?php echo $property['name']; ?></h5>
+            <p class="fonts" class="card-text"><?php echo $property['description']; ?></p>
+            <p class="fonts" class="card-text">Address: <?php echo $property['address']; ?></p>
+            <p class="fonts" class="card-text">City: <?php echo $property['city']; ?></p>
+            <p class="fonts" class="card-text">Status: <?php echo $property['status']; ?></p>
+            <p class="fonts" class="card-text">Price: <?php echo $property['price']; ?></p>
 
         </div>
         </div>
