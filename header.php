@@ -1,12 +1,12 @@
 <?php 
     session_start();
-    if($_POST){   
-    $username = $_POST['username'];
-     if( $username !="Mrestrella"){
-         header("location:session.php");
-     }
+   //  if($_POST){   
+   //  $username = $_POST['username'];
+   //  if( $email !="mrestrella4@gmail.com"){
+   //      header("location:session.php");
+   //  }
 
-    }
+   // }
 ?>
 
 <!DOCTYPE html>

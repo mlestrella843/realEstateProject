@@ -13,12 +13,17 @@ if($_POST){
     $sql="SELECT * FROM `users`;";
     $arrayUsers = $objConnection->consult($sql);
 
-   // print_r($arrayUsers);
+    print_r($arrayUsers);
 
     foreach($arrayUsers as $oneUser){
 
+      echo ("Aqui dentro del foreach");
+      echo ("Variable oneuser");
+      print_r($oneuser);
+
       if($role==='user'){  
               if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
+                 echo ("Entro al if user");
                  header("location:index.php");
               }
                else{
@@ -27,13 +32,14 @@ if($_POST){
             }
       if($role==='admin'){  
               if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
+                echo ("Entro al if admin");
                  header("location:portfolio.php");
               }
                else{
                 header("location:session.php");
               }  
           }      
-  }
+     }
 }
 
 ?>

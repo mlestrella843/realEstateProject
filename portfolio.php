@@ -23,10 +23,9 @@ if($_POST){
     $price = $_POST['price'];
 
     $objConnection=new connection();
-    $sql="INSERT INTO `properties` (`id`, `name`, `image`, `description`, `address`, `city`, `status`, `price`) VALUES (NULL, '$nameProject', '$image', '$description', '$address', '$city', '$status', '$price');";
 
-    //$sql="INSERT INTO `proyectos` (`id`, `name`, `image`, `description`) VALUES (NULL, '$nameProject','$image', '$description');";  
-    
+    $sql="INSERT INTO `properties` (`id`, `name`, `image`, `description`, `address`, `city`, `status`, `price`) VALUES (NULL, '$nameProject', '$image', '$description', '$address', '$city', '$status', '$price');";
+   
     $objConnection->ejecutar($sql);
 
     header("location:portfolio.php");

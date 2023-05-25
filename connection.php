@@ -1,5 +1,6 @@
 
 <?php 
+
     class connection{
         private $server="localhost";
         private $userServer="root";
@@ -26,5 +27,6 @@
             $sentence->execute();
             return $sentence->fetchAll();
         }
+
 }
 ?>
