@@ -1,8 +1,9 @@
 <?php include('connection.php');?>
 
 <?php
+
 if($_POST){   
-  
+
     session_start();
 
     $username = $_POST['username'];
@@ -13,37 +14,30 @@ if($_POST){
     $sql="SELECT * FROM `users`;";
     $arrayUsers = $objConnection->consult($sql);
 
-    print_r($arrayUsers);
+    $roleAdmin = "admin";
+    $roleUser = "user";
 
     foreach($arrayUsers as $oneUser){
+        if( ( ($oneUser['username']==$username) && ($oneUser['password']==$password) ) ){             
+              if( ($oneUser['role']=="admin") ) { 
+                header("location:portfolio.php");   
+                break; 
+              }
+              else{
+                header("location:index.php");   
+                break;  
+              }                            
+           }            
+         else
+           {
+               echo ("The user's credentials are invalid");
+           }
+      }
+  }
+  
 
-      echo ("Aqui dentro del foreach");
-      echo ("Variable oneuser");
-      print_r($oneuser);
-
-      if($role==='user'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
-                 echo ("Entro al if user");
-                 header("location:index.php");
-              }
-               else{
-                header("location:session.php");
-              }
-            }
-      if($role==='admin'){  
-              if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
-                echo ("Entro al if admin");
-                 header("location:portfolio.php");
-              }
-               else{
-                header("location:session.php");
-              }  
-          }      
-     }
-}
 
 ?>
-
 
 <!doctype html>
 <html lang="en">

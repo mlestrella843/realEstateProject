@@ -17,24 +17,34 @@ if($_POST){
     $sql="SELECT * FROM `users`;";
     $arrayUsers = $objConnection->consult($sql);
 
-
-    foreach($arrayUsers as $oneUser){
-        
-        if( ( $oneUser['email']==$email ) ){ 
-            echo ("There are a user with the same email, please register with another emnail");        
-            header("location:register.php");   
-            break;               
+    //I prove if the database is empty first. If it is empty you can insert/create the new user without validate into database.
+        if( empty($arrayUsers) ){
+          echo ($arrayUsers);
+          echo ("No hay registros, puedes insertar cualquier usuario");
+          $sql="INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');";          
+          $objConnection->ejecutar($sql);
+          echo ("the User was created, please login")."<br/>";
+          header("location:session.php");        
         }
-
-           else{
-            $sql="INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `username`, `password`, `role`) VALUES (NULL, '$firstName', '$lastname', '$email', ' $username', '$password', '$role');";          
-            $objConnection->ejecutar($sql);
-            echo ("the User was created, please login")."<br/>";
-            header("location:session.php");
-            break;
-   
-     }
-}
+// If database if not empty, you have to validate if the email exist.
+        else{
+          foreach($arrayUsers as $oneUser){
+            echo ("Entro al foreach");     
+            if( ( $oneUser['email']==$email ) ){ 
+              echo ("There are a user with the same email, please register with another emnail");        
+              header("location:register.php");   
+              break;               
+            }
+//If tha email not exist you can insert into the database and create a new user.
+            else{
+              $sql="INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');";          
+              $objConnection->ejecutar($sql);
+              echo ("the User was created, please login")."<br/>";
+              header("location:session.php");
+              break;
+            }
+        }
+    }
 
 }
 
