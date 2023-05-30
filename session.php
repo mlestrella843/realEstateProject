@@ -20,11 +20,11 @@ if($_POST){
     foreach($arrayUsers as $oneUser){
         if( ( ($oneUser['username']==$username) && ($oneUser['password']==$password) ) ){             
               if( ($oneUser['role']=="admin") ) { 
-                header("location:portfolio.php");   
+                header("location:adminSite.php");   
                 break; 
               }
               else{
-                header("location:index.php");   
+                header("location:projects.php");   
                 break;  
               }                            
            }            
@@ -93,14 +93,14 @@ if($_POST){
             
                         <div class="card-body">
                             <form action="session.php" method="post">
-                                    Username: <input class="form-control" type="text" name="username" id="">
+                                    Username: <input required class="form-control" type="text" name="username" id="">
                                     <br/>
-                                    Password: <input class="form-control" type="text" name="password" id="">
+                                    Password: <input required class="form-control" type="text" name="password" id="">
                                     <br/>
                                     <p>
                                     Role:
                                     <div class="input-group mb-3">
-                                      <select class="form-select" name="roleName">
+                                      <select required class="form-select" name="roleName">
                                         <option selected class="fonts">Choose Admin or User...</option>
                                         <option value="user" class="fonts">User</option>
                                         <option value="admin" class="fonts">Admin</option>

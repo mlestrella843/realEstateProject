@@ -102,20 +102,20 @@ if($_POST){
             
                     <div class="card-body">
                         <form action="register.php" method="post">
-                                First Name: <input class="form-control" type="text" name="firstname" id="">
+                                First Name: <input required class="form-control" type="text" name="firstname" id="">
                                 <br/>
-                                Last Name: <input class="form-control" type="text" name="lastname" id="">
+                                Last Name: <input required class="form-control" type="text" name="lastname" id="">
                                 <br/>
-                                email: <input class="form-control" type="email" name="email" id="">
+                                email: <input required class="form-control" type="email" name="email" id="">
                                 <br/>
-                                Username: <input class="form-control" type="text" name="username" id="">
+                                Username: <input required class="form-control" type="text" name="username" id="">
                                 <br/>
-                                Password: <input class="form-control" type="text" name="password" id="">
+                                Password: <input required class="form-control" type="text" name="password" id="">
                                 <br/>
                                 <p>
                                 Role:
                                 <div class="input-group mb-3">
-                                    <select class="form-select" name="roleName">
+                                    <select required class="form-select" name="roleName">
                                     <option selected class="fonts">Choose Admin or User...</option>
                                     <option value="user" class="fonts">User</option>
                                     <option value="admin" class="fonts">Admin</option>

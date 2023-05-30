@@ -3,6 +3,7 @@
 <?php
 // Aqui se reciben los datos del formulario
 //Ademas de instancia una conexion, se crea una instruccion sql tipo INSERT y se ejecuta.
+//CREATE A PROPERTY
 if($_POST){    
    
     $nameProject = $_POST['nameProject'];
@@ -28,10 +29,10 @@ if($_POST){
    
     $objConnection->ejecutar($sql);
 
-    header("location:portfolio.php");
+    header("location:adminSite.php");
 
 }
-
+//DELETE A PROPERTY
 //for delete a property
 if($_GET){
     //instanciamos una conexion.
@@ -41,12 +42,13 @@ if($_GET){
     unlink("Images/".$image[0]['image']);// aun me queda la duda de porque el indice 0, no seria un valor estatico?
     $sql="DELETE FROM properties WHERE `properties`.`id`=".$id;
     $objConnection->ejecutar($sql);
-    header("location:portfolio.php");
+    header("location:adminSite.php");
 }
 
     $objConnection=new connection();
     $properties = $objConnection->consult("SELECT * FROM `properties`");
-    //print_r($projects);
+    //print_r($projects)
+
 ?>
 
 <br/>
@@ -59,7 +61,7 @@ if($_GET){
                     Project Information
                 </div>
                 <div class="card-body">          
-                    <form action="portfolio.php" method="post" enctype="multipart/form-data">
+                    <form action="adminSite.php" method="post" enctype="multipart/form-data">
                         <!-- nameproject es el nombre que entro por teclado, y que se guarda en la columna name de la base de datos-->
                         Name of project: <input required class="form-control" type="text" name="nameProject" id=""> 
                         <br/>
@@ -120,7 +122,7 @@ if($_GET){
                             <td><?php echo $property['price']; ?></td>
 
                             <td> <a class="btn btn-danger" href="?delete=<?php echo $property['id']; ?>">Delete</a></td>
-                            <td> <a class="btn btn-primary" href="?edit=<?php echo $property['id']; ?>">Edit</a></td>
+                            <td> <a class="btn btn-info" href="edit.php?txtID=<?php echo $property['id']; ?>">Edit</a></td>
                             
                         </tr>
                        <?php } ?>

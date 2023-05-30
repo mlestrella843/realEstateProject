@@ -1,45 +1,46 @@
-<?php include('header.php'); ?>
 <?php include('connection.php');?>
 
-<?php  
-$objConnection=new connection();
-$properties = $objConnection->consult("SELECT * FROM `properties`");
-//print_r($projects);
-?>
-    <div class="p-5 bg-light">
-        <div class="container">
-            <h1 class="display-3">Dreamers Real Estate!</h1>
-            <p class="lead">Our properties waiting for you!</p>
-            <hr class="my-2">
-            <p>More info</p>    
-        </div>
-    </div>
-  
-<!-- this is a card that contains each project-->
+<!doctype html>
+<html lang="en">
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<head>
 
-   <?php foreach($properties as $property) { ?>
+  <title>Dreamer Real Estate</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-    <div class="col">
-        <div class="card">
-        <img style="widht: 250px; height:300px;"  src="Images/<?php echo $property['image']; ?>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="fonts" class="card-title"><?php echo $property['name']; ?></h5>
-            <p class="fonts" class="card-text"><?php echo $property['description']; ?></p>
-            <p class="fonts" class="card-text">Address: <?php echo $property['address']; ?></p>
-            <p class="fonts" class="card-text">City: <?php echo $property['city']; ?></p>
-            <p class="fonts" class="card-text">Status: <?php echo $property['status']; ?></p>
-            <p class="fonts" class="card-text">Price: <?php echo $property['price']; ?></p>
+</head>
 
-        </div>
-        </div>
-    </div>   
-    
-    <?php } ?>
+<body>
 
+<div class="container"> 
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li><a href="session.php">Login</a></li>
+      <li><a href="register.php">Register</a></li>
+      <li><a href="contact.php">Contact Us</a></li>
+      <li><a href="closeSession.php">Sign Out</a></li>
+    </ul>
 </div>
+            
+
+<br/>
+<br/>
+
+  <main>
+
+  </main>
+  <footer>
+    <!-- place footer here -->
+  </footer>
+  
 
 
-    
-<?php include('footer.php');  ?>
+</body>
+
+</html>
