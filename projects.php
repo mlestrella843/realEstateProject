@@ -8,10 +8,10 @@ $properties = $objConnection->consult("SELECT * FROM `properties`");
 ?>
 
 <div class="container"> 
-
+    
     <div class="p-5 bg-light">
         <div class="container">
-            <h1 class="display-3">Green Real Estate</h1>
+            <h1 class="display-3">Dreamers Real Estate!</h1>
             <p class="lead">Our properties waiting for you!</p>
             <hr class="my-2">
             <p>More info</p>    
