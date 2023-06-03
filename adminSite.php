@@ -32,38 +32,25 @@ if($_POST){
 
 }
 
+    //DELETE A PROPERTY
+    //for delete a property
+
+    if(isset($_GET['txtID'])){
+
+        $txtID=( isset($_GET['txtID']) )?$_GET['txtID']:"";
+        $sentence=$connection->prepare("DELETE FROM `properties` WHERE id=$txtID");
+        $sentence->execute();
+        
+    }
 
 
+     //To print de data into table admin
+     $sentence=$connection->prepare("SELECT * FROM `properties`");     
+     $sentence->execute();   
+     $properties = $sentence;
 
-
-//DELETE A PROPERTY
-//for delete a property
-
-/*
-if($_GET){
-    //instanciamos una conexion.
-    $id=$_GET['delete'];
-    $objConnection=new connection();
-    $image=$objConnection->consult("SELECT image FROM `properties` WHERE id=".$id);
-    unlink("Images/".$image[0]['image']);// aun me queda la duda de porque el indice 0, no seria un valor estatico?
-    $sql="DELETE FROM properties WHERE `properties`.`id`=".$id;
-    $objConnection->ejecutar($sql);
-    header("location:adminSite.php");
-}
-
-    $objConnection=new connection();
-    $properties = $objConnection->consult("SELECT * FROM `properties`");
-    //print_r($projects)
-*/
-
-    //To print de data into table admin
-        $sentence=$connection->prepare("SELECT * FROM `properties`");     
-        $sentence->execute();   
-        $properties = $sentence;
 
 ?>
-
-
 
 
 
@@ -137,7 +124,8 @@ if($_GET){
                             <td><?php echo $property['status']; ?></td>
                             <td><?php echo $property['price']; ?></td>
 
-                            <td> <a class="btn btn-danger" href="?delete=<?php echo $property['id']; ?>">Delete</a></td>
+                            <td> <a class="btn btn-danger" href="adminSite.php?txtID=<?php echo $property['id']; ?>" role="button">Delete</a></td>
+
                             <td> <a class="btn btn-info" href="edit.php?txtID=<?php echo $property['id']; ?>">Edit</a></td>
                             
                         </tr>
