@@ -10,9 +10,14 @@ if($_POST){
     $password = $_POST['password'];
     $role = $_POST['roleName'];
 
-    $objConnection=new connection();
-    $sql="SELECT * FROM `users`;";
-    $arrayUsers = $objConnection->consult($sql);
+    $sentence=$connection->prepare("SELECT * FROM `users`;");
+    $sentence->execute();
+    $arrayUsers = $sentence;
+
+
+   // $objConnection=new connection();
+    //$sql="SELECT * FROM `users`;";
+    //$arrayUsers = $objConnection->consult($sql);
 
     $roleAdmin = "admin";
     $roleUser = "user";

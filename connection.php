@@ -1,7 +1,40 @@
 
 <?php 
 
-    class connection{
+        $server="localhost";
+        $database="real_estate";
+        $user="root";
+        $password="";
+
+        try{
+
+            $connection=new PDO("mysql:host=$server;dbname=$database",$user,$password);
+            echo "Connection done...";
+
+        }catch(Exception $error){
+            echo $error->getMessage();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        /*
+
+
+        class connection{
         private $server="localhost";
         private $userServer="root";
         private $passwordServer="";
@@ -16,6 +49,7 @@
                 return "Connection failed".$e;
             }
         }
+
         public function ejecutar($sql) {// This function returns an id depending on the sql instruction passed as a parameter. In this case in an insert. 
             //Esta funxion te permite Insertar, borrar y actualizar, ya que ejecuta la instruccion y devuelve el id
             $this->connection->exec($sql);
@@ -27,6 +61,11 @@
             $sentence->execute();
             return $sentence->fetchAll();
         }
+        }
+        */
 
-}
+
+
+
+
 ?>

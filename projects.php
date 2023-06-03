@@ -2,9 +2,10 @@
 <?php include('connection.php');?>
 
 <?php  
-$objConnection=new connection();
-$properties = $objConnection->consult("SELECT * FROM `properties`");
-//print_r($projects);
+$sentence=$connection->prepare("SELECT * FROM `properties`");    
+$sentence->execute();
+$properties = $sentence;
+
 ?>
 
 <div class="container"> 

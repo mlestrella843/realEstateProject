@@ -4,36 +4,42 @@
 // Aqui se reciben los datos del formulario
 //Ademas de instancia una conexion, se crea una instruccion sql tipo INSERT y se ejecuta.
 //CREATE A PROPERTY
-if($_POST){    
-   
-    $nameProject = $_POST['nameProject'];
+
+if($_POST){
+
+    $nameProject=(isset ($_POST['nameProject']))? $_POST['nameProject']:"" ;
     //image
     $date = new DateTime();
     $image= $date->getTimeStamp()."_".$_FILES['file']['name'];
     $image_temp=$_FILES['file']['tmp_name'];
     move_uploaded_file($image_temp,"Images/".$image);
     //description
-    $description = $_POST['description'];
+    $description=(isset ($_POST['description']))? $_POST['description']:"" ;
     //Address
-    $address = $_POST['address'];
+    $address=(isset ($_POST['address']))? $_POST['address']:"" ;
     //city
-    $city = $_POST['city'];
+    $city=(isset ($_POST['city']))? $_POST['city']:"" ;
     //status
-    $status = $_POST['status'];
+    $status=(isset ($_POST['status']))? $_POST['status']:"" ;
     //price
-    $price = $_POST['price'];
+    $price=(isset ($_POST['price']))? $_POST['price']:"" ;
 
-    $objConnection=new connection();
-
-    $sql="INSERT INTO `properties` (`id`, `name`, `image`, `description`, `address`, `city`, `status`, `price`) VALUES (NULL, '$nameProject', '$image', '$description', '$address', '$city', '$status', '$price');";
+    $sentence=$connection->prepare("INSERT INTO `properties` (`id`, `name`, `image`, `description`, 
+    `address`, `city`, `status`, `price`) VALUES (NULL, '$nameProject', '$image', '$description',
+    '$address', '$city', '$status', '$price');");
    
-    $objConnection->ejecutar($sql);
-
-    header("location:adminSite.php");
+    $sentence->execute();
 
 }
+
+
+
+
+
 //DELETE A PROPERTY
 //for delete a property
+
+/*
 if($_GET){
     //instanciamos una conexion.
     $id=$_GET['delete'];
@@ -48,8 +54,18 @@ if($_GET){
     $objConnection=new connection();
     $properties = $objConnection->consult("SELECT * FROM `properties`");
     //print_r($projects)
+*/
+
+    //To print de data into table admin
+        $sentence=$connection->prepare("SELECT * FROM `properties`");     
+        $sentence->execute();   
+        $properties = $sentence;
 
 ?>
+
+
+
+
 
 <br/>
 <div class="container">
