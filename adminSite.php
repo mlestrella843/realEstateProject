@@ -34,25 +34,20 @@ if($_POST){
 
     //DELETE A PROPERTY
     //for delete a property
-
     if(isset($_GET['txtID'])){
 
         $txtID=( isset($_GET['txtID']) )?$_GET['txtID']:"";
         $sentence=$connection->prepare("DELETE FROM `properties` WHERE id=$txtID");
         $sentence->execute();
-        
-    }
 
+    }
 
      //To print de data into table admin
      $sentence=$connection->prepare("SELECT * FROM `properties`");     
      $sentence->execute();   
      $properties = $sentence;
 
-
 ?>
-
-
 
 <br/>
 <div class="container">
@@ -126,7 +121,7 @@ if($_POST){
 
                             <td> <a class="btn btn-danger" href="adminSite.php?txtID=<?php echo $property['id']; ?>" role="button">Delete</a></td>
 
-                            <td> <a class="btn btn-info" href="edit.php?txtID=<?php echo $property['id']; ?>">Edit</a></td>
+                            <td> <a class="btn btn-info" href="edit.php?txtID=<?php echo $property['id']; ?>" role="button">Edit</a></td>
                             
                         </tr>
                        <?php } ?>

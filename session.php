@@ -14,11 +14,6 @@ if($_POST){
     $sentence->execute();
     $arrayUsers = $sentence;
 
-
-   // $objConnection=new connection();
-    //$sql="SELECT * FROM `users`;";
-    //$arrayUsers = $objConnection->consult($sql);
-
     $roleAdmin = "admin";
     $roleUser = "user";
 
