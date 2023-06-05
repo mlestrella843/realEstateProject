@@ -1,10 +1,13 @@
 <?php include('connection.php');?>
 
 <?php
+session_start();
 
-if($_POST){   
+if($_POST){  
 
-    session_start();
+    $_SESSION['username']= "";
+    $_SESSION['password']= "";
+    $_SESSION['role']="";
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -14,27 +17,36 @@ if($_POST){
     $sentence->execute();
     $arrayUsers = $sentence;
 
-    $roleAdmin = "admin";
-    $roleUser = "user";
-
     foreach($arrayUsers as $oneUser){
-        if( ( ($oneUser['username']==$username) && ($oneUser['password']==$password) ) ){             
-              if( ($oneUser['role']=="admin") ) { 
+      if($oneUser['role']=="admin"){ 
+        if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ) {                 
+                $_SESSION['username']= $oneUser['username'];
+                $_SESSION['password']= $oneUser['password'];  
+                $_SESSION['role']=$oneUser['role'];            
                 header("location:adminSite.php");   
-                break; 
-              }
-              else{
-                header("location:projects.php");   
                 break;  
-              }                            
-           }            
-         else
-           {
-               echo ("The user's credentials are invalid");
-           }
-      }
-  }
-  
+              }   
+      }   
+      else { 
+        if (  ($oneUser['role']=="user") && ($oneUser['username']==$username) && ($oneUser['password']==$password)  ){ 
+              $_SESSION['username']= $oneUser['username'];
+              $_SESSION['password']= $oneUser['password'];  
+              $_SESSION['role']=$oneUser['role'];                  
+              header("location:projects.php");   
+              break;   
+            } else {
+              $_SESSION['username']= "";
+              $_SESSION['password']= "";
+              $_SESSION['role']="";   
+              echo "The user and password are invalid";
+              //header("location:session.php");   
+              break;  
+            }                       
+          }                                
+       }
+   }
+
+
 
 
 ?>
@@ -95,7 +107,7 @@ if($_POST){
                             <form action="session.php" method="post">
                                     Username: <input required class="form-control" type="text" name="username" id="">
                                     <br/>
-                                    Password: <input required class="form-control" type="text" name="password" id="">
+                                    Password: <input required class="form-control" type="password" name="password" id="">
                                     <br/>
                                     <p>
                                     Role:

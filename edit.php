@@ -32,6 +32,7 @@
         $status=(isset ($_POST['status']))? $_POST['status']:"" ;
         $price=(isset ($_POST['price']))? $_POST['price']:"" ;
 
+
         $sql="UPDATE properties
         SET 
         name=:name,
@@ -43,8 +44,9 @@
         price=:price
         WHERE id=:id";
 
+
         $sentence=$connection->prepare($sql);
-   
+
         $sentence->bindParam(":name",$nameProject);
         $sentence->bindParam(":image",$image);
         $sentence->bindParam(":description",$description);
@@ -53,15 +55,13 @@
         $sentence->bindParam(":status",$status);
         $sentence->bindParam(":price",$price);
         $sentence->bindParam(":id",$txtID);
- 
+
         $sentence->execute();
 
     }
 
 
-
 ?>
-
 
 <br/>
 <div class="container">

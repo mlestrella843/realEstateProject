@@ -6,7 +6,10 @@ $sentence=$connection->prepare("SELECT * FROM `properties`");
 $sentence->execute();
 $properties = $sentence;
 
+echo "Welcome ". $_SESSION['username'];
+
 ?>
+
 
 <div class="container"> 
     

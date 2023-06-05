@@ -1,5 +1,11 @@
 <?php 
-    session_start();
+    session_start(); 
+?>
+<?php 
+  // if( $_SESSION['role']=="admin") {
+   // header("location:adminSite.php");  
+  // }
+   
 ?>
 
 <!DOCTYPE html>

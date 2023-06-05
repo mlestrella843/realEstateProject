@@ -1,5 +1,6 @@
 <?php include('header.php');?>
 <?php include('connection.php');?>
+
 <?php
 // Aqui se reciben los datos del formulario
 //Ademas de instancia una conexion, se crea una instruccion sql tipo INSERT y se ejecuta.
@@ -46,6 +47,8 @@ if($_POST){
      $sentence=$connection->prepare("SELECT * FROM `properties`");     
      $sentence->execute();   
      $properties = $sentence;
+
+     echo "Welcome ". $_SESSION['username'];
 
 ?>
 
