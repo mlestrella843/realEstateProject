@@ -36,13 +36,10 @@ if($_POST){
     //DELETE A PROPERTY
     //for delete a property
     if(isset($_GET['txtID'])){
-
         $txtID=( isset($_GET['txtID']) )?$_GET['txtID']:"";
         $sentence=$connection->prepare("DELETE FROM `properties` WHERE id=$txtID");
         $sentence->execute();
-
     }
-
      //To print de data into table admin
      $sentence=$connection->prepare("SELECT * FROM `properties`");     
      $sentence->execute();   

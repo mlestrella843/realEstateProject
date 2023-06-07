@@ -1,11 +1,9 @@
 <?php include('connection.php');?>
-
+  <?php session_start(); ?>
 <?php
 
 if($_POST){   
   
-    session_start();
-
     $firstName = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
@@ -13,16 +11,16 @@ if($_POST){
     $password = $_POST['password'];
     $role = $_POST['roleName'];
 
-    $objConnection=new connection();
-    $sql="SELECT * FROM `users`;";
-    $arrayUsers = $objConnection->consult($sql);
+    $sentence=$connection->prepare("SELECT * FROM `users`;");
+    $sentence->execute();
+    $arrayUsers = $sentence;
 
     //I prove if the database is empty first. If it is empty you can insert/create the new user without validate into database.
         if( empty($arrayUsers) ){
-          echo ($arrayUsers);
+          print_r($arrayUsers);
           echo ("No hay registros, puedes insertar cualquier usuario");
-          $sql="INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');";          
-          $objConnection->ejecutar($sql);
+          $sentence=$connection->prepare("INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');");          
+          $sentence->execute();
           echo ("the User was created, please login")."<br/>";
           header("location:session.php");        
         }
@@ -37,8 +35,9 @@ if($_POST){
             }
 //If tha email not exist you can insert into the database and create a new user.
             else{
-              $sql="INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');";          
-              $objConnection->ejecutar($sql);
+              $sentence=$connection->prepare("INSERT INTO `users` (`id`,`firstname`,`lastname`,`email`,`username`,`password`,`role`) VALUES (NULL,'$firstName','$lastname','$email','$username','$password','$role');");          
+              $sentence->execute();
+              print_r($sentence); echo "aqui debiera imprimirse"."<br/>";
               echo ("the User was created, please login")."<br/>";
               header("location:session.php");
               break;
@@ -110,7 +109,7 @@ if($_POST){
                                 <br/>
                                 Username: <input required class="form-control" type="text" name="username" id="">
                                 <br/>
-                                Password: <input required class="form-control" type="text" name="password" id="">
+                                Password: <input required class="form-control" type="password" name="password" id="">
                                 <br/>
                                 <p>
                                 Role:

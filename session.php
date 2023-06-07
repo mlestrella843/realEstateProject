@@ -1,7 +1,10 @@
-<?php include('connection.php');?>
+<?php include('connection.php');
+   session_start();
+?>
+
+
 
 <?php
-session_start();
 
 if($_POST){  
 
@@ -16,33 +19,51 @@ if($_POST){
     $sentence=$connection->prepare("SELECT * FROM `users`;");
     $sentence->execute();
     $arrayUsers = $sentence;
-
+   
     foreach($arrayUsers as $oneUser){
-      if($oneUser['role']=="admin"){ 
+      if( $oneUser['role']=="admin" ){ 
         if( ($oneUser['username']==$username) && ($oneUser['password']==$password) ) {                 
                 $_SESSION['username']= $oneUser['username'];
                 $_SESSION['password']= $oneUser['password'];  
-                $_SESSION['role']=$oneUser['role'];            
+                $_SESSION['role']=$oneUser['role'];     
+                print_r($oneUser['username'])."<br/>";
+                print_r($oneUser['password'])."<br/>";
+                print_r($oneUser['role'])."<br/>";
+
+                echo "Entro al foreach si tiene rol de ADMIN";       
                 header("location:adminSite.php");   
                 break;  
               }   
-      }   
-      else { 
-        if (  ($oneUser['role']=="user") && ($oneUser['username']==$username) && ($oneUser['password']==$password)  ){ 
+           }       
+    else { 
+      if( $oneUser['role']=="user" ){ 
+        if ( ($oneUser['username']==$username) && ($oneUser['password']==$password) ){ 
               $_SESSION['username']= $oneUser['username'];
               $_SESSION['password']= $oneUser['password'];  
-              $_SESSION['role']=$oneUser['role'];                  
-              header("location:projects.php");   
+              $_SESSION['role']=$oneUser['role'];  
+                print_r($oneUser['username'])."<br/>";
+                print_r($oneUser['password'])."<br/>";
+                print_r($oneUser['role'])."<br/>";
+ 
+                echo "Entro al foreach si tiene rol de USER";              
+                 header("location:projects.php");   
               break;   
             } else {
-              $_SESSION['username']= "";
-              $_SESSION['password']= "";
-              $_SESSION['role']="";   
+                $_SESSION['username']= "";
+                $_SESSION['password']= "";
+                $_SESSION['role']="";   
+
+                print_r($oneUser['username'])."<br/>";
+                print_r($oneUser['password'])."<br/>";
+                print_r($oneUser['role'])."<br/>";
+
               echo "The user and password are invalid";
-              //header("location:session.php");   
+              header("location:session.php");   
               break;  
             }                       
-          }                                
+          }    
+        }
+          
        }
    }
 
